@@ -30,7 +30,7 @@ case `uname` in
 	exit -1
 esac
 
-GITREPO=${GITREPO:-"git://github.com/mozilla-b2g/b2g-manifest"}
+GITREPO=${GITREPO:-"git://github.com/michaelwu/b2g-manifest"}
 BRANCH=${BRANCH:-master}
 
 while [ $# -ge 1 ]; do
@@ -195,6 +195,11 @@ case "$1" in
 	repo_sync $1
 	;;
 
+"shinano")
+	echo PRODUCT_NAME=shinano >> .tmp-config &&
+	repo_sync $1
+	;;
+
 *)
 	echo "Usage: $0 [-cdflnq] (device name)"
 	echo "Flags are passed through to |./repo sync|."
@@ -229,6 +234,7 @@ case "$1" in
 	echo - flame
 	echo - flame-kk
 	echo - rpi "(Revision B)"
+	echo - shinano
 	echo - emulator
 	echo - emulator-jb
 	echo - emulator-kk
